@@ -1,0 +1,58 @@
+h2. Introduction
+
+This gem will help you to handle _has_many :through_ associations when you need to add/remove these ones with checkboxes. If you think about this type of situation you do the same steps for each association you have to handle with checkboxes. I exctracted this gem from a project where I had to handle about ten associations with checkboxes.
+
+h2. How to use it
+
+The best way to describe throughcheckboxes is to show some code:
+
+In your model:
+
+<pre>
+class User < ActiveRecord::Base
+    has_many :groups,:through=>:user_groups
+    has_many :user_groups
+    # add your associations
+    checkboxes_for :groups
+end
+
+class Group < ActiveRecord::Base
+    attr_accessible :name
+
+    def to_s
+        name
+    end
+end
+
+class UserGroup < ActiveRecord::Base
+  belongs_to :user
+  belongs_to :group
+end
+</pre>
+
+In your view:
+
+<pre>
+<%= form_for @user do |f| %>
+  <%= f.error_messages %>
+  <%= f.checkboxes_for :groups  %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>
+</pre>
+
+and that's all. Now, when you submit your form you get the has_many :through association updated.
+
+h2. Roadmap
+
+* improve documentation
+* write options for helper
+* write more helpers
+
+h2. Copyright
+
+This program is free software. It comes without any warranty,
+to the extent permitted by applicable law. You can redistribute
+it and/or modify it under the terms of the Do What The Fuck You
+Want To Public License, Version 2, as published by Sam Hocevar.
+See http://sam.zoy.org/wtfpl/COPYING for more details.

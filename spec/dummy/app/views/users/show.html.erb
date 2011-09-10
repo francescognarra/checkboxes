@@ -1,0 +1,20 @@
+<p>
+<strong>Email:</strong>
+<%= @user.email %>
+</p>
+
+<p>
+<strong>Groups:</strong>
+<table>
+  <tr><th>Name</th></tr>
+<% for group in @user.groups  %>
+  <tr><td><%= group.name  %></td></tr>
+<% end %>
+</table>
+</p>
+
+<p>
+<%= link_to "Edit", edit_user_path(@user) %> |
+<%= link_to "Destroy", @user, :confirm => 'Are you sure?', :method => :delete %> |
+<%= link_to "View All", users_path %>
+</p>
