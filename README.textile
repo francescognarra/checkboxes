@@ -1,3 +1,5 @@
+"!https://secure.travis-ci.org/lucapette/checkboxes.png!":http://travis-ci.org/lucapette/checkboxes
+
 h2. Introduction
 
 This gem will help you to handle _has_many :through_ associations when you need to add/remove these ones with checkboxes. If you think about this type of situation you do the same steps for each association you have to handle with checkboxes. I exctracted this gem from a project where I had to handle about ten associations with checkboxes.
