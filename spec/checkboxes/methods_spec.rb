@@ -8,7 +8,7 @@ describe "checkboxes_for" do
         class User
           checkboxes_for :gropues
         end
-      }.should raise_error(Checkboxes::Core::CheckboxesNameError)
+      }.should raise_error(Checkboxes::NameError)
     end
   end
 

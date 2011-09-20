@@ -1,8 +1,9 @@
 module Checkboxes
 
+  class NameError <  StandardError; end
+
   module Core # This module contains utility methods for both extensions and helpers.
 
-    class CheckboxesNameError <  StandardError; end
 
     extend self
 
@@ -20,7 +21,7 @@ module Checkboxes
         unless (klass.reflections[relation].present? &&
                 klass.reflections[relation].macro == :has_many &&
                 klass.reflections[relation].options[:through].present?)
-          raise CheckboxesNameError, "#{relation} isn't an has_many :through for model #{klass}, check it out please."
+          raise Checkboxes::NameError, "#{relation} isn't an has_many :through for model #{klass}, check it out please."
         end
       end
     end
